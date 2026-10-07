@@ -32,7 +32,8 @@
     { id: 'outage',  label: 'Pack 2',     sub: 'Power Outage game',      r: [845, 70, 120, 120] },
     { id: 'traffic', label: 'Pack 3',     sub: 'Hoboken traffic sim',    r: [710, 205, 120, 120] },
     { id: 'twin',    label: 'Pack 4',     sub: 'XACT Floor 3D twin',     r: [845, 205, 120, 120] },
-    { id: 'office',  label: 'Office',     sub: 'Resume',                 r: [710, 390, 255, 215] },
+    { id: 'pickem',  label: 'Pack 5',     sub: 'World Cup pick\'em',     r: [710, 340, 120, 120] },
+    { id: 'office',  label: 'Office',     sub: 'Resume',                 r: [710, 480, 255, 125] },
     { id: 'ship',    label: 'Outbound',   sub: 'Contact',                r: [240, 535, 380, 85] }
   ];
   var byId = {}; ZONES.forEach(function (z) { byId[z.id] = z; });
@@ -138,7 +139,7 @@
     // safety lines around rack blocks and pack area
     c.strokeStyle = C.line; c.lineWidth = 3;
     c.strokeRect(232, 72, 396, 168); c.strokeRect(232, 292, 396, 168);
-    c.setLineDash([10, 8]); c.strokeRect(702, 62, 271, 271); c.strokeRect(232, 527, 396, 96); c.setLineDash([]);
+    c.setLineDash([10, 8]); c.strokeRect(702, 62, 271, 406); c.strokeRect(232, 527, 396, 96); c.setLineDash([]);
 
     // pack stations
     ZONES.filter(function (z) { return /^Pack/.test(z.label); }).forEach(function (z) {
@@ -151,17 +152,22 @@
       mono(c, z.sub, x + 60, y + 110, 9, C.tx, 'center');
     });
 
+    // open station: room for the next project
+    c.fillStyle = C.table; c.globalAlpha = 0.45; c.fillRect(857, 370, 96, 46); c.globalAlpha = 1;
+    mono(c, 'PACK 6', 905, 354, 9, C['floor-label'], 'center');
+    mono(c, 'open', 905, 450, 9, C['floor-label'], 'center');
+
     // office: walls, glass, desk
     var of = byId.office.r;
     c.strokeStyle = C.wall; c.lineWidth = 6; c.strokeRect(of[0], of[1], of[2], of[3]);
     c.strokeStyle = C.glass; c.lineWidth = 6; c.beginPath(); c.moveTo(of[0] + 30, of[1]); c.lineTo(of[0] + 200, of[1]); c.stroke();
-    c.fillStyle = C.floor; c.fillRect(of[0] - 4, of[1] + 120, 8, 40); // door
-    c.fillStyle = C.table; c.fillRect(of[0] + 120, of[1] + 60, 100, 44);
-    c.fillStyle = C['fork-dark']; c.fillRect(of[0] + 150, of[1] + 66, 34, 6);
-    c.fillStyle = C.paper; c.fillRect(of[0] + 128, of[1] + 78, 16, 20);
-    c.fillStyle = C.wall; c.beginPath(); c.arc(of[0] + 168, of[1] + 120, 9, 0, Math.PI * 2); c.fill();
-    stencil(c, 'OFFICE', of[0] + 60, of[1] + 175, 22, C['floor-label']);
-    mono(c, 'resume · education', of[0] + 60, of[1] + 196, 9, C.tx, 'center');
+    c.fillStyle = C.floor; c.fillRect(of[0] - 4, of[1] + 44, 8, 36); // door
+    c.fillStyle = C.table; c.fillRect(of[0] + 130, of[1] + 26, 100, 44);
+    c.fillStyle = C['fork-dark']; c.fillRect(of[0] + 160, of[1] + 32, 34, 6);
+    c.fillStyle = C.paper; c.fillRect(of[0] + 138, of[1] + 44, 16, 20);
+    c.fillStyle = C.wall; c.beginPath(); c.arc(of[0] + 178, of[1] + 88, 9, 0, Math.PI * 2); c.fill();
+    stencil(c, 'OFFICE', of[0] + 62, of[1] + 52, 22, C['floor-label']);
+    mono(c, 'resume · education', of[0] + 62, of[1] + 76, 9, C.tx, 'center');
 
     // outbound staging
     [[262, 556], [290, 556], [262, 584], [354, 556], [382, 556], [446, 584], [538, 556], [566, 556], [566, 584]].forEach(function (p) { palletAt(c, p[0], p[1], 24); });

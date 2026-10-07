@@ -80,6 +80,7 @@ section ul{margin:8px 0 0;padding-left:18px;display:grid;gap:7px}
 .ladder{list-style:none;margin:6px 0 12px;padding:0;display:grid;gap:3px;font-size:12px}
 .ladder span{display:inline-block;width:76px;color:var(--t2)}
 .links{margin-top:12px}
+.sub-h{margin:16px 0 4px;font:700 13px var(--f-cond);text-transform:uppercase;letter-spacing:.1em;color:var(--t2)}
 .btn{display:inline-block;font:700 14px var(--f-cond);text-transform:uppercase;letter-spacing:.08em;text-decoration:none;background:var(--rule);color:var(--bg);padding:9px 14px;border:2px solid var(--rule)}
 .btn:hover{background:var(--accent);color:var(--accent-ink);border-color:var(--accent-ink)}
 .contact{font-size:15px;user-select:all}
