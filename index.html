@@ -100,7 +100,10 @@
         <li>Retailer-compliant EDI carton labels and Zebra thermal stock labels, printed straight from the browser.</li>
         <li>Data pipelines from the ERP, Shopify and ShipStation.</li>
       </ul>
-      <div class="shots" data-shots=""></div>
+      <div class="shots">
+        <figure><img src="./media/wms-overview.webp" alt="XACT WMS overview screen: KPI cards for on-hand inventory, open pick tickets, stockout risk and receiving pipeline, with values blurred" loading="lazy" width="1876" height="473"><figcaption>Overview: inventory, orders and receiving at a glance. Figures blurred.</figcaption></figure>
+        <figure><img src="./media/wms-inventory-map.webp" alt="3D inventory map of the client's area: shelving, bin panels, locked vault, carts and pallets, with a zone legend" loading="lazy" width="1712" height="627"><figcaption>Inventory map: every location in 3D, with audit, moves and alerts.</figcaption></figure>
+      </div>
     </section>
 
     <section id="outage" data-zone="outage" data-loc="PACK 2 · PROJECT">
@@ -114,14 +117,26 @@
     <section id="traffic" data-zone="traffic" data-loc="PACK 3 · PROJECT">
       <h2>Hoboken traffic sim</h2>
       <p class="meta">SUMO traffic simulation · Python · built with Claude</p>
-      <p>A live traffic-signal game built on a simulation of Hoboken's real street network, including event surges like festivals and World Cup crowds.</p>
+      <p>A live traffic-signal game running on a real simulation of Hoboken's street network. A Python server drives the SUMO traffic simulator step by step and streams it to a browser, where you retime signals and watch the city respond.</p>
+      <ul>
+        <li>Game modes rebuild the city's demand on the fly: Weekday Rush, Summer Waterfront, Italian Fest and World Cup 2026, each with its own volume and hotspot.</li>
+        <li>Pedestrian surges at Hoboken Terminal are built from the real PATH train schedule, and Citi Bike stations come from the live public feed.</li>
+      </ul>
       <video class="clip" data-src="" muted loop playsinline controls preload="none" aria-label="Screen recording of the Hoboken traffic simulation"></video>
     </section>
 
     <section id="twin" data-zone="twin" data-loc="PACK 4 · PROJECT">
       <h2>XACT Floor</h2>
-      <p class="meta">3D digital twin · prototype</p>
-      <p>A 3D model of our building with docks, racks and pack stations, showing purchase orders, pick tickets and stock moving through the floor. I built it to plan space and to picture what an all-in-one 3PL system could look like. It runs on real client data, so it's shown on request.</p>
+      <p class="meta">3D digital twin · Three.js · built with Claude</p>
+      <p>A full 3D model of our building, from the shared truck court and dock doors to every rack, pack station and the client's fenced area. I built it to plan space and to picture an all-in-one 3PL system where the map is the home screen.</p>
+      <ul>
+        <li>Walk into each part of the operation: yard and docks, receiving, inventory, ecommerce pack-out, wholesale and VAS, labels, cycle count, supplier portal, billing and the vault.</li>
+        <li>Role-based views: an owner sees every tenant, a client sees only its own goods, and restricted zones are hatched out.</li>
+        <li>Replay a full shift at up to 600× speed against the dock schedule, with live counters for trucks, receiving, packing and billable work.</li>
+      </ul>
+      <div class="shots">
+        <figure><img src="./media/xact-floor-3d.webp" alt="XACT Floor 3D model of the building: suite with pallet racking, the client's fenced area, dock doors and truck court, with a walk-into menu and shift timeline" loading="lazy" width="1508" height="881"><figcaption>Suite view with the shift timeline. Figures blurred; live demo on request.</figcaption></figure>
+      </div>
     </section>
 
     <section id="pickem" data-zone="pickem" data-loc="PACK 5 · PROJECT">

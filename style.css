@@ -86,7 +86,9 @@ section ul{margin:8px 0 0;padding-left:18px;display:grid;gap:7px}
 .contact{font-size:15px;user-select:all}
 .shots{display:grid;gap:10px;margin-top:12px}
 .shots:empty{display:none}
-.shots img,.clip{width:100%;border:2px solid var(--rule);display:block;margin-top:10px}
+.shots figure{margin:0}
+.shots img,.clip{width:100%;height:auto;border:2px solid var(--rule);display:block;margin-top:10px}
+.shots figcaption{font:500 12px var(--f-mono);color:var(--t2);margin-top:5px}
 .foot{font-size:11px;color:var(--t2);border-top:3px solid var(--rule);padding-top:10px}
 
 @media (max-width:720px){
