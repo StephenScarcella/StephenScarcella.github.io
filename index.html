@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stephen Scarcella</title>
+<meta name="description" content="Operations manager who builds the systems the warehouse floor runs on. Newark NJ 3PL operations, a self-built WMS, and side projects built with Claude.">
+<meta property="og:title" content="Stephen Scarcella">
+<meta property="og:description" content="Operations manager who builds the systems the floor runs on.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=Martian+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&display=swap">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hud">
+    <div class="hud-id">
+      <h1 class="name">Stephen Scarcella</h1>
+      <p class="thesis">Operations manager who builds the systems the floor runs on.</p>
+    </div>
+    <dl class="hud-stats">
+      <div><dt>Site</dt><dd>Newark, NJ</dd></div>
+      <div><dt>Shift</dt><dd><span class="dot" aria-hidden="true"></span>On</dd></div>
+      <div><dt>Since</dt><dd>Oct 2021</dd></div>
+    </dl>
+  </header>
+
+  <nav class="chips" aria-label="Sections on the floor" id="chips"></nav>
+
+  <section class="floor-wrap" aria-label="Interactive warehouse floor">
+    <div class="floor-frame" id="frame">
+      <canvas id="floor" role="img" aria-label="Top-down warehouse floor with forklifts. Click a zone to open that section, or use the buttons above."></canvas>
+      <div class="tip" id="tip" hidden></div>
+      <aside class="panel" id="panel" hidden aria-labelledby="panelTitle">
+        <div class="panel-bar">
+          <span class="panel-loc mono" id="panelLoc"></span>
+          <button type="button" class="close" id="close" aria-label="Close section">Close ✕</button>
+        </div>
+        <div class="panel-body" id="panelBody"></div>
+      </aside>
+    </div>
+    <div class="ticker mono" aria-live="off">
+      <span class="ticker-k">Floor log</span>
+      <ol id="log"></ol>
+    </div>
+  </section>
+
+  <p class="hint">Click a zone on the floor, or read it straight through below.</p>
+
+  <main id="sections">
+
+    <section id="about" data-zone="about" data-loc="DOCK 1–5 · RECEIVING">
+      <h2>Inbound: about me</h2>
+      <p>I run warehouse operations for a luxury jewelry and handbag brand at a 3PL in Newark, New Jersey. I started on the floor in October 2021 and worked my way up to operations manager.</p>
+      <p>Along the way I learned to build software. Our warehouse management system, the label printing, the cycle count tools and the billing are all things I designed and built myself with Claude, and the floor uses them every day.</p>
+      <p>I studied Finance and Operations Management &amp; Business Analytics at the University of Maryland's Robert H. Smith School of Business.</p>
+    </section>
+
+    <section id="tahari" data-zone="tahari" data-loc="RACKS A–D · 2021–2025">
+      <h2>Elie Tahari</h2>
+      <p class="meta">Third-party logistics · 220,000 sq ft multi-client warehouse</p>
+      <ol class="ladder mono">
+        <li><span>Oct 2021</span> Assistant Floor Manager</li>
+        <li><span>Jun 2022</span> Assistant Account Manager</li>
+        <li><span>Oct 2022</span> Account Manager</li>
+        <li><span>Aug 2024</span> Operations Manager</li>
+      </ol>
+      <ul>
+        <li>Started on the floor of a warehouse with nothing close to a real inventory system. Daily crew of 5–8, and 10–18 for counts and large receiving events.</li>
+        <li>Led wall-to-wall counts of 50,000–120,000 units with RF scanners and Excel. Walked the lines to audit counters, checked one-off SKUs against scan returns, and got every count audited and uploaded into the RLM ERP.</li>
+        <li>Found thousands of unreported coats on a Levy Group audit. Their SKUs changed by season and they had never been relabeled, so I matched them to current SKUs and got them back into inventory.</li>
+        <li>Took over the R&amp;M Richards account from an underperforming manager, processing orders in the client's own systems remotely.</li>
+        <li>Kept ecommerce shipping through a Black Friday power outage by setting up Verizon cellular routers.</li>
+        <li>Onboarded Suitably, a women's workwear brand, onto Nordstrom's DSCO dropship platform with no budget.</li>
+      </ul>
+    </section>
+
+    <section id="xact" data-zone="xact" data-loc="RACKS E–H · 2025–NOW">
+      <h2>XACT Performance</h2>
+      <p class="meta">Operations Manager · Alexis Bittar account lead · Jun 2025 – now</p>
+      <ul>
+        <li>Moved with the Alexis Bittar account when Tahari's 3PL closed, and planned and ran the move of the brand's inventory into the new building. XACT kept me on as the account's operator instead of installing its own manager.</li>
+        <li>Run end-to-end operations: receiving, inventory control, ecommerce fulfillment, wholesale to major retailers including TJX, store replenishment, returns and VAS.</li>
+        <li>Own the brand's freight routing: LTL and truckload pickups with regional carriers, and the main contact at FedEx and UPS. Carrier rate shopping saves the client tens of thousands of dollars a year.</li>
+        <li>Absorbed several years of double-digit wholesale growth with the same team and footprint.</li>
+        <li>Lead the pack team, wrote the SOPs and set the team's pay rates.</li>
+      </ul>
+    </section>
+
+    <section id="wms" data-zone="wms" data-loc="PACK 1 · PROJECT">
+      <h2>XACT WMS</h2>
+      <p class="meta">Postgres/Supabase · JavaScript · Python · built with Claude</p>
+      <p>The warehouse management system our floor and our client use every day. I designed and built it myself over the past year.</p>
+      <ul>
+        <li>15 modules: receiving, SKU lookup, wholesale and ecommerce orders, cycle counts, returns reconciliation, VAS billing, supplies and more.</li>
+        <li>A 13,000-SKU product master backing everything.</li>
+        <li>Retailer-compliant EDI carton labels and Zebra thermal stock labels, printed straight from the browser.</li>
+        <li>Data pipelines from the ERP, Shopify and ShipStation.</li>
+      </ul>
+      <div class="shots" data-shots=""></div>
+    </section>
+
+    <section id="outage" data-zone="outage" data-loc="PACK 2 · PROJECT">
+      <h2>Power Outage</h2>
+      <p class="meta">Browser game · TypeScript · built with Claude</p>
+      <p>A grid-operator strategy game. You're the balancing authority for a real U.S. state's power grid, and your job is to keep generation equal to demand while managing cost and carbon.</p>
+      <p>The scenarios are real events. In Texas you run ERCOT through Winter Storm Uri in February 2021: an islanded grid, gas wellheads freezing, prices pinned at the cap and demand climbing toward 77 GW. Plants you push too hard in the cold trip offline.</p>
+      <p class="links"><a class="btn" data-href="https://poweroutagegame.netlify.app/" target="_blank" rel="noopener">Play it</a></p>
+    </section>
+
+    <section id="traffic" data-zone="traffic" data-loc="PACK 3 · PROJECT">
+      <h2>Hoboken traffic sim</h2>
+      <p class="meta">SUMO traffic simulation · Python · built with Claude</p>
+      <p>A live traffic-signal game built on a simulation of Hoboken's real street network, including event surges like festivals and World Cup crowds.</p>
+      <video class="clip" data-src="" muted loop playsinline controls preload="none" aria-label="Screen recording of the Hoboken traffic simulation"></video>
+    </section>
+
+    <section id="twin" data-zone="twin" data-loc="PACK 4 · PROJECT">
+      <h2>XACT Floor</h2>
+      <p class="meta">3D digital twin · prototype</p>
+      <p>A 3D model of our building with docks, racks and pack stations, showing purchase orders, pick tickets and stock moving through the floor. I built it to plan space and to picture what an all-in-one 3PL system could look like. It runs on real client data, so it's shown on request.</p>
+    </section>
+
+    <section id="office" data-zone="office" data-loc="OFFICE · RESUME">
+      <h2>Resume</h2>
+      <p>Five years of 3PL operations: receiving, inventory control, cycle counting, VAS, ecommerce and wholesale outbound, freight routing and returns, plus the software to run them.</p>
+      <p class="meta">University of Maryland, Robert H. Smith School of Business, 2021<br>B.S. Finance and Operations Management &amp; Business Analytics</p>
+      <p class="links"><a class="btn" data-href="https://claude.ai/artifact/FNpSPGn4bKumBGGFWXqUgC" target="_blank" rel="noopener">Open resume</a></p>
+    </section>
+
+    <section id="ship" data-zone="ship" data-loc="OUTBOUND · CONTACT">
+      <h2>Outbound: get in touch</h2>
+      <p class="contact mono">stephenscarcella@gmail.com</p>
+      <p class="links"><a class="btn" href="https://www.linkedin.com/in/stephen-scarcella-212948159/" target="_blank" rel="noopener">LinkedIn</a></p>
+    </section>
+
+  </main>
+
+  <footer class="foot mono">Built by Stephen Scarcella with Claude · Hoboken, NJ</footer>
+</div>
+<script src="./floor.js"></script>
+</body>
+</html>
