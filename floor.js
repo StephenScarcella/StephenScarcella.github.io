@@ -33,6 +33,7 @@
     { id: 'traffic', label: 'Pack 3',     sub: 'Hoboken traffic sim',    r: [710, 205, 120, 120] },
     { id: 'twin',    label: 'Pack 4',     sub: 'XACT Floor 3D twin',     r: [845, 205, 120, 120] },
     { id: 'pickem',  label: 'Pack 5',     sub: 'World Cup pick\'em',     r: [710, 340, 120, 120] },
+    { id: 'tracker', label: 'Pack 6',     sub: 'Sale-event tracker',     r: [845, 340, 120, 120] },
     { id: 'office',  label: 'Office',     sub: 'Resume',                 r: [710, 480, 255, 125] },
     { id: 'ship',    label: 'Outbound',   sub: 'Contact',                r: [240, 535, 380, 85] }
   ];
@@ -98,6 +99,27 @@
     mono(c, letter, x - 12, y + h / 2, 11, C['floor-label'], 'center');
   }
 
+  // ---- brands tagged on the racks. g: 'tahari' (2021–25), 'xact' (2025–now) or 'both'; at = tag centers ----
+  var BRANDS = [
+    { n: 'ELIE TAHARI',    g: 'tahari', at: [[335, 93]] },
+    { n: 'THE LEVY GROUP', g: 'tahari', at: [[525, 93]] },
+    { n: 'R&M RICHARDS',   g: 'tahari', at: [[320, 219]] },
+    { n: 'ALEXIS BITTAR',  g: 'both',   at: [[452, 219], [335, 313]] },
+    { n: 'SUITABLY',       g: 'both',   at: [[566, 219], [500, 313]] },
+    { n: 'REPUBLIC CLOTHING', g: 'xact', at: [[430, 439]] }
+  ];
+  function brandTag(c, text, x, y, g) {
+    c.save();
+    c.font = '600 8.5px "Martian Mono", Consolas, monospace';
+    var w = Math.ceil(c.measureText(text).width) + 16, h = 15, x0 = Math.round(x - w / 2), y0 = Math.round(y - h / 2);
+    c.fillStyle = C.paper; c.fillRect(x0, y0, w, h);
+    c.fillStyle = g === 'xact' ? C.fork : C.upright; c.fillRect(x0, y0, 6, h);
+    if (g === 'both') { c.fillStyle = C.fork; c.fillRect(x0, y0 + h / 2, 6, h / 2); }
+    c.strokeStyle = C.wall; c.lineWidth = 1; c.strokeRect(x0 + 0.5, y0 + 0.5, w - 1, h - 1);
+    c.fillStyle = C.tx; c.textAlign = 'left'; c.textBaseline = 'middle'; c.fillText(text, x0 + 10, y + 0.5);
+    c.restore();
+  }
+
   function drawStatic() {
     seed = 7;
     var c = sctx;
@@ -135,6 +157,7 @@
     rows.forEach(function (r) { rackRow(c, 240, r[0], 380, 26, r[1]); rackRow(c, 240, r[0] + 26, 380, 26, r[2]); });
     stencil(c, 'TAHARI  2021–25', 430, 156, 20, C['floor-label']);
     stencil(c, 'XACT  2025–NOW', 430, 376, 20, C['floor-label']);
+    BRANDS.forEach(function (b) { b.at.forEach(function (p) { brandTag(c, b.n, p[0], p[1], b.g); }); });
 
     // safety lines around rack blocks and pack area
     c.strokeStyle = C.line; c.lineWidth = 3;
@@ -152,10 +175,6 @@
       mono(c, z.sub, x + 60, y + 110, 9, C.tx, 'center');
     });
 
-    // open station: room for the next project
-    c.fillStyle = C.table; c.globalAlpha = 0.45; c.fillRect(857, 370, 96, 46); c.globalAlpha = 1;
-    mono(c, 'PACK 6', 905, 354, 9, C['floor-label'], 'center');
-    mono(c, 'open', 905, 450, 9, C['floor-label'], 'center');
 
     // office: walls, glass, desk
     var of = byId.office.r;

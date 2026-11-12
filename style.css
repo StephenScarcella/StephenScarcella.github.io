@@ -89,6 +89,12 @@ section ul{margin:8px 0 0;padding-left:18px;display:grid;gap:7px}
 .shots figure{margin:0}
 .shots img,.clip{width:100%;height:auto;border:2px solid var(--rule);display:block;margin-top:10px}
 .shots figcaption{font:500 12px var(--f-mono);color:var(--t2);margin-top:5px}
+.brands{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:6px;font-size:15px}
+section ul.brands{padding-left:0}
+.brands b{font:700 12px var(--f-cond);text-transform:uppercase;letter-spacing:.08em;color:var(--t2);margin-right:8px}
+.sw{display:inline-block;width:9px;height:14px;margin:0 6px 0 2px;vertical-align:-2px;border:1px solid var(--wall);background:var(--upright)}
+.sw.xact{background:var(--fork)}
+.sw.both{background:linear-gradient(var(--upright) 50%,var(--fork) 50%)}
 .foot{font-size:11px;color:var(--t2);border-top:3px solid var(--rule);padding-top:10px}
 
 @media (max-width:720px){
